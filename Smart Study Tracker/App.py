@@ -76,7 +76,7 @@ if st.session_state.page == "app":
     with right_col:
 
         BASE_DIR = Path(__file__).resolve().parent
-        image_path = BASE_DIR / "sssets" / "image.png"
+        image_path = BASE_DIR / "assets" / "image.png"
         st.image(str(image_path),use_container_width=True)
 
     st.divider()

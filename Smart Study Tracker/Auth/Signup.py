@@ -1,7 +1,7 @@
 import streamlit as st
-from Databases.Connection import users_collection
-from Utils.Session_State import navigate
-from Components.PageConfig import show_logo
+from databases.Connection import users_collection
+from utils.Session_State import navigate
+from components.PageConfig import show_logo
 
 def show_signup():
 

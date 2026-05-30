@@ -1,6 +1,6 @@
 import streamlit as st
-from Databases.Connection import topics_collection
-from Databases.Connection import subjects_collection
+from databases.Connection import topics_collection
+from databases.Connection import subjects_collection
 
 
 def get_total_chapter(current_user_id):

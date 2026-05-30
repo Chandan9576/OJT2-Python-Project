@@ -1,8 +1,8 @@
 import streamlit as st
-from Databases.Connection import users_collection
-from Utils.Session_State import navigate
-from Utils.Session_State import loginSession
-from Components.PageConfig import show_logo
+from databases.Connection import users_collection
+from utils.Session_State import navigate
+from utils.Session_State import loginSession
+from components.PageConfig import show_logo
 import random
 
 def show_signin():

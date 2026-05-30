@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from Databases.Connection import activity_logs_collection
+from databases.Connection import activity_logs_collection
 
 
 def add_activity(current_user_id,action,message):
