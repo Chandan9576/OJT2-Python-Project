@@ -158,6 +158,11 @@ This project was built to create a clean and practical study productivity system
 
 # 👨‍💻 Developer
 
-**Chandan Kumar**
+**Chandan Kumar Prajapati**
 
 Built with Python + Streamlit 🚀
+
+🔗 Linkedin :- https://www.linkedin.com/feed/  
+💻 Github :- https://github.com/Chandan9576  
+🧑‍💻Portfolio :- https://chandankumarportfolio.netlify.app/
+
