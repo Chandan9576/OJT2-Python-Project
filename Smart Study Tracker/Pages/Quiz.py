@@ -15,6 +15,8 @@ if "logged_in" not in st.session_state:
 if st.session_state.logged_in==True:
     st.title(f"🧠 {st.session_state.current_user['username']}'s Quiz")
 
+    st.write("Quiz Page Comming Soon......")
+
 else:
     dash_col1, dash_col2 = st.columns([7, 2])
 

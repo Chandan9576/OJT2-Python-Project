@@ -6,12 +6,13 @@ from Components.PageConfig import show_PageConfig,show_logo
 from Components.Sidebar import show_sidebar
 from Databases.Connection import subjects_collection
 from Databases.Connection import topics_collection
-from Utils.Analytics import get_total_completed_topics
-from Utils.Analytics import get_total_topics
+from Utils.Analytics import get_total_completed_chapter
+from Utils.Analytics import get_total_chapter
 from Utils.Analytics import get_total_subject
-from Utils.Analytics import get_total_subject_topics
-from Utils.Analytics import get_total_copleted_subject_topics
+from Utils.Analytics import get_total_subject_chapter
+from Utils.Analytics import get_total_copleted_subject_chapter
 from Utils.Analytics import get_subject_wise_progress
+from Utils.Avtivity import get_recent_activity
 
 
 show_PageConfig()
@@ -64,7 +65,7 @@ if st.session_state.logged_in==True:
 
             st.caption("Total Topics")
 
-            st.title(get_total_topics(current_user_id))
+            st.title(get_total_chapter(current_user_id))
 
     # ----- CARD 3 Total Topics -----
 
@@ -73,7 +74,7 @@ if st.session_state.logged_in==True:
         with st.container(border=True):
             st.subheader("✅ Completed Topics")
             st.caption("Completed topics")
-            st.title(get_total_completed_topics(current_user_id))
+            st.title(get_total_completed_chapter(current_user_id))
 
     # ----- CARD 4 Strak -----
 
@@ -126,8 +127,8 @@ if st.session_state.logged_in==True:
     with st.container(border=True):
         st.subheader("📈 Progress Overview")
         st.write("")
-        if get_total_topics(current_user_id) > 0:
-            progress_percentage = (get_total_completed_topics(current_user_id) / get_total_topics(current_user_id)) * 100
+        if get_total_chapter(current_user_id) > 0:
+            progress_percentage = (get_total_completed_chapter(current_user_id) / get_total_chapter(current_user_id)) * 100
             st.info(f"{progress_percentage:.2f} %")
             st.progress(progress_percentage / 100)
         else:
@@ -136,15 +137,30 @@ if st.session_state.logged_in==True:
 
     # ---------- RECENT ACTIVITY ----------
 
-    with st.container(border=True):
+    st.subheader("📌 Recent Activity")
 
-        st.subheader("📌 Recent Activity")
+    recent_activities = get_recent_activity(current_user_id)
 
-        st.write("")
+    if len(recent_activities) == 0:
 
-        st.info("No recent activity yet")
+        st.info("No recent activity found")
 
-    st.write("")
+    else:
+
+        for activity in recent_activities:
+
+            with st.container(border=True):
+
+                st.write(
+
+                    f"✅ {activity['message']}"
+                )
+
+                formatted_time = activity["created_at"].strftime("%d %b %Y • %I:%M %p")
+
+                st.caption(
+                    formatted_time
+                )
 
 else:
     dash_col1, dash_col2 = st.columns([7, 2])

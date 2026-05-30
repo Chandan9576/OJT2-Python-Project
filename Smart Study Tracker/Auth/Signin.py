@@ -3,6 +3,7 @@ from Databases.Connection import users_collection
 from Utils.Session_State import navigate
 from Utils.Session_State import loginSession
 from Components.PageConfig import show_logo
+import random
 
 
 def show_signin():
@@ -101,10 +102,9 @@ def show_signin():
                 unsafe_allow_html=True
             )
 
-            if st.form_submit_button(
-                "Create New Account",
-                use_container_width=True
-            ):
+            if st.form_submit_button("Create New Account",use_container_width=True):
 
                 st.session_state.page = "signup"
                 st.rerun()
+
+            

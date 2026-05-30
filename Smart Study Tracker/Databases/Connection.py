@@ -19,6 +19,6 @@ db = client[DB_NAME]
 users_collection = db["users"]
 subjects_collection = db["subjects"]
 topics_collection = db["topics"]
-
+activity_logs_collection = db["activity"]
 # Test connection
 print("Database Connected Successfully")

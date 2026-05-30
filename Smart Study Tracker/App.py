@@ -74,8 +74,7 @@ if st.session_state.page == "app":
 
     with right_col:
 
-        st.image(
-            "https://images.unsplash.com/photo-1516321318423-f06f85e504b3",
+        st.image("Assets/image.png",
             use_container_width=True
         )
 

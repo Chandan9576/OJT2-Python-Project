@@ -3,13 +3,13 @@ from Databases.Connection import topics_collection
 from Databases.Connection import subjects_collection
 
 
-def get_total_topics(current_user_id):
+def get_total_chapter(current_user_id):
     total_topics = topics_collection.count_documents({
     "user_id":current_user_id
     })
     return total_topics
     
-def get_total_completed_topics(current_user_id):
+def get_total_completed_chapter(current_user_id):
     total_completed_topics = topics_collection.count_documents({
         "user_id":current_user_id,
         "completed":True
@@ -22,14 +22,14 @@ def get_total_subject(current_user_id):
     })
     return total_subject
 
-def get_total_subject_topics(current_user_id,current_subject_id):
+def get_total_subject_chapter(current_user_id,current_subject_id):
     total_subject_topics = topics_collection.count_documents({
         "user_id": current_user_id,
         "subject_id": current_subject_id
     })
     return total_subject_topics
 
-def get_total_copleted_subject_topics(current_user_id,current_subject_id):
+def get_total_copleted_subject_chapter(current_user_id,current_subject_id):
     total_completed_subject_topics = topics_collection.count_documents({
         "user_id": current_user_id,
         "subject_id": current_subject_id,

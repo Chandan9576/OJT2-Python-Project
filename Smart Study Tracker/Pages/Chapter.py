@@ -5,9 +5,11 @@ from Utils.Session_State import navigate
 from Components.PageConfig import show_PageConfig,show_logo
 from Databases.Connection import subjects_collection
 from Databases.Connection import topics_collection
-from Utils.Analytics import get_total_subject_topics
-from Utils.Analytics import get_total_copleted_subject_topics
+from Utils.Analytics import get_total_subject_chapter
+from Utils.Analytics import get_total_copleted_subject_chapter
 from Utils.Analytics import get_subject_wise_progress
+from Utils.Avtivity import add_activity
+import time
 
 show_PageConfig()
 
@@ -41,7 +43,7 @@ if st.session_state.logged_in==True:
 
     # ---------- PAGE HEADER ----------
 
-    st.title(f"📘 Your Chapter/Topics : {current_subject_name}")
+    st.title(f"📘 Your Chapter : {current_subject_name}")
 
     st.caption(
         "Manage and track your learning topics"
@@ -62,15 +64,15 @@ if st.session_state.logged_in==True:
 
     with info1:
         with st.container(border=True):
-            st.info(f"Total Chapter/topics :- {get_total_subject_topics(current_user_id,current_subject_id)}")
+            st.info(f"Total Chapter/topics :- {get_total_subject_chapter(current_user_id,current_subject_id)}")
 
     with info2:
         with st.container(border=True):
-            st.success(f"✅ Completed Chapter :- {get_total_copleted_subject_topics(current_user_id,current_subject_id)}")
+            st.success(f"✅ Completed Chapter :- {get_total_copleted_subject_chapter(current_user_id,current_subject_id)}")
 
     with info3:
         with st.container(border=True):
-            st.warning(f"🟡 Pending Chapter :- {get_total_subject_topics(current_user_id,current_subject_id)-get_total_copleted_subject_topics(current_user_id,current_subject_id)}")
+            st.warning(f"🟡 Pending Chapter :- {get_total_subject_chapter(current_user_id,current_subject_id)-get_total_copleted_subject_chapter(current_user_id,current_subject_id)}")
     
 
     st.write("")
@@ -82,17 +84,17 @@ if st.session_state.logged_in==True:
         st.subheader("➕ Add New Chapter")
 
         topic_name = st.text_input(
-            "Topic Name",
-            placeholder="Enter chapter/topic name"
+            "Chapter Name",
+            placeholder="Enter chapter name"
         )
 
         if st.button(
-            "Add chapter/Topic",
+            "Add chapter",
             use_container_width=True
         ):
 
             if topic_name.strip() == "":
-                st.warning("Please enter chapter/topic name")
+                st.warning("Please enter chapter name")
 
             else:
 
@@ -212,30 +214,68 @@ if st.session_state.logged_in==True:
                         )
                 
 
+                # ----- COMPLETE / UNDO BUTTON -----
+
                 with top_col3:
-                    
-                    if topic["completed"] is False:
+
+                    # ---------- MARK COMPLETE ----------
+
+                    if not topic["completed"]:
 
                         if st.button(
+
                             "✅ Mark Complete",
+
                             key=f"complete_{topic['_id']}",
-                            use_container_width=True):
+
+                            use_container_width=True
+                        ):
 
                             topics_collection.update_one(
+
                                 {"_id": topic["_id"]},
+
                                 {"$set": {"completed": True}}
                             )
 
+
+                            add_activity(
+
+                                current_user_id,
+
+                                "Completed Topic",
+
+                                f"Completed {topic['topic_name']}"
+                            )
+
+
                             st.rerun()
+
+
+                    # ---------- UNDO COMPLETE ----------
 
                     else:
 
-                        st.button(
-                            "✅ Completed",
-                            disabled=True,
-                            key=f"done_{topic['_id']}",
+                        if st.button(
+                            "↩ Undo",
+                            key=f"undo_{topic['_id']}",
                             use_container_width=True
-                        )
+                        ):
+
+                            topics_collection.update_one(
+                                {"_id": topic["_id"]},
+                                {"$set": {"completed": False}}
+                            )
+
+
+                            add_activity(
+                                current_user_id,
+                                "Undo Topic",
+                                f"Marked Pending {topic['topic_name']}"
+                            )
+
+
+                            st.rerun()
 
                 with top_col4:
 

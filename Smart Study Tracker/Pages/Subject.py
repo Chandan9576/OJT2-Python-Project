@@ -5,11 +5,11 @@ from Utils.Session_State import subjectSession
 from Utils.Session_State import navigate
 from Components.PageConfig import show_PageConfig,show_logo
 from Databases.Connection import subjects_collection
-from Utils.Analytics import get_total_completed_topics
-from Utils.Analytics import get_total_topics
+from Utils.Analytics import get_total_completed_chapter
+from Utils.Analytics import get_total_chapter
 from Utils.Analytics import get_total_subject
-from Utils.Analytics import get_total_subject_topics
-from Utils.Analytics import get_total_copleted_subject_topics
+from Utils.Analytics import get_total_subject_chapter
+from Utils.Analytics import get_total_copleted_subject_chapter
 from Utils.Analytics import get_subject_wise_progress
 from Utils.Analytics import get_total_completed_subjects
 
@@ -117,20 +117,20 @@ if st.session_state.logged_in==True:
 
                     # ------ Total subject topics ------------
 
-                    st.write(f"Total Topics : {get_total_subject_topics(st.session_state.current_user["_id"],subject["_id"])}")
+                    st.write(f"Total Topics : {get_total_subject_chapter(st.session_state.current_user["_id"],subject["_id"])}")
 
                     # ------- Total completed subject topics ----
 
-                    st.write(f"Completed Topics : {get_total_copleted_subject_topics(st.session_state.current_user["_id"],subject["_id"])}")
+                    st.write(f"Completed Topics : {get_total_copleted_subject_chapter(st.session_state.current_user["_id"],subject["_id"])}")
 
                     # -------- Subject wise progress --------
 
-                    total_topics = get_total_subject_topics(
+                    total_topics = get_total_subject_chapter(
                         st.session_state.current_user["_id"],
                         subject["_id"]
                     )
 
-                    completed_topics = get_total_copleted_subject_topics(
+                    completed_topics = get_total_copleted_subject_chapter(
                         st.session_state.current_user["_id"],
                         subject["_id"]
                     )
