@@ -87,7 +87,7 @@ def show_signin():
                         }
                         loginSession(current_user)
                         st.success("Login successful")
-                        st.switch_page("pages/dashboard.py")
+                        st.switch_page("pages/Dashboard.py")
 
                     else:
                         st.error("Invalid login details!!!")
