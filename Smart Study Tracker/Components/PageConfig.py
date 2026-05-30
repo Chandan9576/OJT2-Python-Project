@@ -13,7 +13,7 @@ def show_PageConfig():
 def show_logo():
     BASE_DIR = Path(__file__).resolve().parent.parent
 
-    logo_path = BASE_DIR / "Assets" / "logo.png"
+    logo_path = BASE_DIR / "assets" / "logo.png"
 
     logo = Image.open(logo_path)
 

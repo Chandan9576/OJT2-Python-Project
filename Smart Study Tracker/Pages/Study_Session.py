@@ -1,8 +1,8 @@
 import streamlit as st
-from Auth.Signin import show_signin
-from Utils.Session_State import loginSession
-from Utils.Session_State import navigate
-from Components.PageConfig import show_PageConfig,show_logo
+from auth.Signin import show_signin
+from utils.Session_State import loginSession
+from utils.Session_State import navigate
+from components.PageConfig import show_PageConfig,show_logo
 
 show_PageConfig()
 

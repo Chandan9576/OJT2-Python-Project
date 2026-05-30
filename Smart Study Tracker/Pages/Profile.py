@@ -1,20 +1,20 @@
 import streamlit as st
-from Auth.Signin import show_signin
-from Utils.Session_State import logout
-from Utils.Session_State import navigate
-from Components.PageConfig import show_PageConfig,show_logo
-from Utils.Avtivity import add_activity
-from Utils.Avtivity import get_recent_activity
-from Utils.Analytics import get_total_completed_chapter
-from Utils.Analytics import get_total_chapter
-from Utils.Analytics import get_total_subject
-from Utils.Analytics import get_total_subject_chapter
-from Utils.Analytics import get_total_copleted_subject_chapter
-from Utils.Analytics import get_total_completed_subjects
-from Databases.Connection import users_collection
-from Databases.Connection import subjects_collection
-from Databases.Connection import topics_collection
-from Databases.Connection import activity_logs_collection
+from auth.Signin import show_signin
+from utils.Session_State import logout
+from utils.Session_State import navigate
+from components.PageConfig import show_PageConfig,show_logo
+from utils.Avtivity import add_activity
+from utils.Avtivity import get_recent_activity
+from utils.Analytics import get_total_completed_chapter
+from utils.Analytics import get_total_chapter
+from utils.Analytics import get_total_subject
+from utils.Analytics import get_total_subject_chapter
+from utils.Analytics import get_total_copleted_subject_chapter
+from utils.Analytics import get_total_completed_subjects
+from databases.Connection import users_collection
+from databases.Connection import subjects_collection
+from databases.Connection import topics_collection
+from databases.Connection import activity_logs_collection
 import time
 
 

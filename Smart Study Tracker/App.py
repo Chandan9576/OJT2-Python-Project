@@ -1,11 +1,11 @@
 # app.py
 import streamlit as st
-from Auth.Signin import show_signin
-from Auth.Signup import show_signup
+from auth.Signin import show_signin
+from auth.Signup import show_signup
 # from Pages.Dashboard import show_dashboard
-from Utils.Session_State import init_session
-from Utils.Session_State import navigate
-from Components.PageConfig import show_PageConfig,show_logo
+from utils.Session_State import init_session
+from utils.Session_State import navigate
+from components.PageConfig import show_PageConfig,show_logo
 from pathlib import Path
 
 show_PageConfig()
@@ -76,7 +76,7 @@ if st.session_state.page == "app":
     with right_col:
 
         BASE_DIR = Path(__file__).resolve().parent
-        image_path = BASE_DIR / "Assets" / "image.png"
+        image_path = BASE_DIR / "sssets" / "image.png"
         st.image(str(image_path),use_container_width=True)
 
     st.divider()

@@ -1,18 +1,18 @@
 import streamlit as st
-from Auth.Signin import show_signin
-from Utils.Session_State import loginSession
-from Utils.Session_State import navigate
-from Components.PageConfig import show_PageConfig,show_logo
-from Components.Sidebar import show_sidebar
-from Databases.Connection import subjects_collection
-from Databases.Connection import topics_collection
-from Utils.Analytics import get_total_completed_chapter
-from Utils.Analytics import get_total_chapter
-from Utils.Analytics import get_total_subject
-from Utils.Analytics import get_total_subject_chapter
-from Utils.Analytics import get_total_copleted_subject_chapter
-from Utils.Analytics import get_subject_wise_progress
-from Utils.Avtivity import get_recent_activity
+from auth.Signin import show_signin
+from utils.Session_State import loginSession
+from utils.Session_State import navigate
+from components.PageConfig import show_PageConfig,show_logo
+from components.Sidebar import show_sidebar
+from databases.Connection import subjects_collection
+from databases.Connection import topics_collection
+from utils.Analytics import get_total_completed_chapter
+from utils.Analytics import get_total_chapter
+from utils.Analytics import get_total_subject
+from utils.Analytics import get_total_subject_chapter
+from utils.Analytics import get_total_copleted_subject_chapter
+from utils.Analytics import get_subject_wise_progress
+from utils.Avtivity import get_recent_activity
 
 
 show_PageConfig()
