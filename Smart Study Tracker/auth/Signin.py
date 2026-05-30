@@ -86,8 +86,10 @@ def show_signin():
                             "full_name": current_user["full_name"]
                         }
                         loginSession(current_user)
+                        st.session_state.logged_in = True
+                        st.session_state.page = "signin"
                         st.success("Login successful")
-                        st.switch_page("pages/Dashboard.py")
+                        st.rerun()
 
                     else:
                         st.error("Invalid login details!!!")

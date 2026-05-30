@@ -143,7 +143,10 @@ if st.session_state.page == "app":
 # ---------------- SIGN IN PAGE STATE ----------------
 
 elif st.session_state.page == "signin":
-    show_signin()
+    if st.session_state.logged_in == True:
+        st.switch_page("pages/Dashboard.py")
+    else:
+        show_signin()
 
 
 # ---------------- SIGN UP PAGE STATE ----------------
