@@ -1,4 +1,4 @@
-from Databases.Connection import users_collection
+from databases.Connection import users_collection
 
 
 def change_password(

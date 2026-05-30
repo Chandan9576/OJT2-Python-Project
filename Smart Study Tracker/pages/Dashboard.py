@@ -3,7 +3,6 @@ from auth.Signin import show_signin
 from utils.Session_State import loginSession
 from utils.Session_State import navigate
 from components.PageConfig import show_PageConfig,show_logo
-from components.Sidebar import show_sidebar
 from databases.Connection import subjects_collection
 from databases.Connection import topics_collection
 from utils.Analytics import get_total_completed_chapter
