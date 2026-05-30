@@ -1,5 +1,6 @@
 import streamlit as st
 from PIL import Image
+from pathlib import Path
 
 def show_PageConfig():
     st.set_page_config(
@@ -9,5 +10,10 @@ def show_PageConfig():
 )
 
 def show_logo():
-    logo = Image.open("Assets/logo.png")
+    BASE_DIR = Path(__file__).resolve().parent.parent
+
+    logo_path = BASE_DIR / "Assets" / "logo.png"
+
+    logo = Image.open(logo_path)
+
     st.logo(logo, size="large")
