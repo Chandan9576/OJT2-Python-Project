@@ -1,24 +1,56 @@
 from pymongo import MongoClient
+
+import streamlit as st
+
 from dotenv import load_dotenv
+
 import os
 
-# Load .env file
+
+# ---------- LOAD ENV ----------
+
 load_dotenv()
 
-# Get values from .env
-MONGO_URI = os.getenv("MONGO_URI")
-DB_NAME = os.getenv("DB_NAME")
 
-# MongoDB connection
-client = MongoClient(MONGO_URI)
+# ---------- GET MONGO URL ----------
 
-# Database access
+try:
+
+    # ----- STREAMLIT CLOUD -----
+
+    MONGO_URL = st.secrets["MONGO_URL"]
+
+except:
+
+    # ----- LOCAL DEVELOPMENT -----
+
+    MONGO_URL = os.getenv("MONGO_URI")
+
+
+# ---------- DATABASE NAME ----------
+
+DB_NAME = "smart_study_tracker"
+
+
+# ---------- MONGODB CONNECTION ----------
+
+client = MongoClient(MONGO_URL)
+
+
+# ---------- DATABASE ----------
+
 db = client[DB_NAME]
 
-# Existing Collection
+
+# ---------- COLLECTIONS ----------
+
 users_collection = db["users"]
+
 subjects_collection = db["subjects"]
+
 topics_collection = db["topics"]
+
 activity_logs_collection = db["activity"]
-# Test connection
+
+
 print("Database Connected Successfully")
