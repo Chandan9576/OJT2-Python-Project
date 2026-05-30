@@ -6,7 +6,7 @@ from Auth.Signup import show_signup
 from Utils.Session_State import init_session
 from Utils.Session_State import navigate
 from Components.PageConfig import show_PageConfig,show_logo
-
+from pathlib import Path
 
 show_PageConfig()
 
@@ -75,9 +75,9 @@ if st.session_state.page == "app":
 
     with right_col:
 
-        st.image("Assets/image.png",
-            use_container_width=True
-        )
+        BASE_DIR = Path(__file__).resolve().parent
+        image_path = BASE_DIR / "Assets" / "image.png"
+        st.image(str(image_path),use_container_width=True)
 
     st.divider()
 

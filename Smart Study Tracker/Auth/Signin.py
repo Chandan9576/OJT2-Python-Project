@@ -5,7 +5,6 @@ from Utils.Session_State import loginSession
 from Components.PageConfig import show_logo
 import random
 
-
 def show_signin():
 
     show_logo()
