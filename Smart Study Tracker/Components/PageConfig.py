@@ -1,4 +1,5 @@
 import streamlit as st
+from PIL import Image
 
 def show_PageConfig():
     st.set_page_config(
@@ -8,4 +9,5 @@ def show_PageConfig():
 )
 
 def show_logo():
-    st.logo("Assets/logo.png",size="large")
+    logo = Image.open("Assets/logo.png")
+    st.logo(logo, size="large")
