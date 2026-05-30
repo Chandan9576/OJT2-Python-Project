@@ -7,6 +7,7 @@ def show_PageConfig():
     page_title="Smart Study Tracker",
     page_icon="📚",
     layout="wide",  
+    initial_sidebar_state="expanded"
 )
 
 def show_logo():
