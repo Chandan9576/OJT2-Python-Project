@@ -162,7 +162,7 @@ if st.session_state.logged_in==True:
                                 "subject_name": subject["subject_name"]
                             }
 
-                            st.switch_page("Pages/Chapter.py")
+                            st.switch_page("pages/Chapter.py")
                         
 
                     # ----- DELETE BUTTON -----
