@@ -51,7 +51,7 @@ if st.session_state.logged_in==True:
 
     # ---------- BACK TP SUBJECT PAGE --------
     if st.button("⬅️ Back To Subjects"):
-        st.switch_page("Pages/Subject.py")
+        st.switch_page("pages/Subject.py")
 
     
         
