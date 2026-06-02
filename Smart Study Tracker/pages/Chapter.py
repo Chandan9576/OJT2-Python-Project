@@ -30,7 +30,7 @@ if st.session_state.logged_in==True:
     if ("current_subject" not in st.session_state or st.  session_state.current_subject is None):
         st.warning("Please select a subject first")
         if st.button("⬅️ Back To Subjects"):
-            st.switch_page("Pages/Subject.py")
+            st.switch_page("pages/Subject.py")
 
         st.stop()
 
